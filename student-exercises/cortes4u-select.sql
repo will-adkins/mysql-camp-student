@@ -11,6 +11,6 @@ SELECT * FROM Individual WHERE ID IN (1,3,5,7,19);
 
 /* exercise 2 */
 
-SELECT * FROM Band WHERE IsTogether = '0';
+SELECT * FROM Band WHERE IsTogether = '0' and Genre = 'Alternative';
 
-SELECT ID, Name FROM Band WHERE ID =4;
+SELECT ID, Name FROM Band WHERE ID = 4;
