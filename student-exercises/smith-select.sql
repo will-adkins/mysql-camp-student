@@ -19,3 +19,12 @@ SELECT * FROM Band WHERE Name LIKE '% and %';
 SELECT * FROM Individual WHERE FirstName Like '___';
 
 SELECT * FROM Band WHERE Name LIKE '%_s';
+
+/* BASEBALL */
+SELECT * FROM player;
+SELECT * FROM batting;
+SELECT * FROM team;
+SELECT * FROM roster;
+
+SELECT team.ID, team.teamName, batting.teamID, batting.Rank, batting.battingAvg FROM team INNER JOIN batting ON team.ID = batting.teamID;
+SELECT batting.playerID, player.FirstName, player.LastName FROM batting INNER JOIN player ON batting.playerID = player.ID;
