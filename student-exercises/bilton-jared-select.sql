@@ -30,3 +30,15 @@ WHERE Genre = 'Alternative' and isTogether = 0;
 
 SELECT ID, Name FROM Band
 WHERE ID = 4;
+
+-- Exercise 5 --
+SELECT *
+FROM Band
+WHERE Name LIKE '%and%';
+
+SELECT *
+FROM Individual WHERE FirstName LIKE '_im';
+
+SELECT *
+FROM Band
+WHERE Name LIKE '%s';
