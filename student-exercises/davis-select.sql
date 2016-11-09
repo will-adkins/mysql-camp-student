@@ -1,6 +1,7 @@
 USE RockStarDay2;
 
 SHOW COLUMNS FROM Band;
+-- exercise 3
 
 SELECT * FROM Individual
 WHERE LastName='Jennings';
