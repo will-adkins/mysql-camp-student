@@ -27,5 +27,11 @@ SELECT * FROM team;
 SELECT * FROM roster;
 
 SELECT team.ID, team.teamName, batting.teamID, batting.Rank, batting.battingAvg FROM team INNER JOIN batting ON team.ID = batting.teamID;
-SELECT batting.playerID, player.FirstName, player.LastName FROM batting INNER JOIN player ON batting.playerID = player.ID;
-SELECT player.ID, player.LastName, roster.teamID, roster.Position, roster.playerID FROM player INNER JOIN roster On player.ID = roster.playerID;
+SELECT batting.playerID, batting.battingAvg, player.FirstName, player.LastName FROM batting INNER JOIN player ON batting.playerID = player.ID;
+SELECT player.ID, player.LastName, roster.teamID, roster.Position, roster.playerID FROM player INNER JOIN roster On player.ID = roster.playerID INNER JOIN team ON roster.teamID = team.ID WHERE teamName = 'Boston Red Sox';
+
+/* Exercise: More fun with joins */
+SELECT player.ID, batting.playerID, batting.teamID FROM player LEFT JOIN batting ON player.ID = batting.playerID;
+SELECT roster.teamID, roster.playerID, team.ID, team.teamName FROM roster RIGHT JOIN team ON roster.teamID = team.ID;
+SELECT roster.teamID, roster.playerID, team.ID, team.teamName FROM roster RIGHT JOIN team ON roster.teamID = team.ID WHERE roster.playerID LIKE '__' or roster.playerID Like '___';
+SELECT roster.teamID, roster.playerID, team.ID, team.teamName FROM roster RIGHT JOIN team ON roster.teamID = team.ID WHERE roster.playerID IS NULL;
