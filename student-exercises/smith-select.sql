@@ -1,0 +1,3 @@
+USE RockStarDay2;
+SHOW COLUMNS FROM Band;
+SELECT * FROM Band;
