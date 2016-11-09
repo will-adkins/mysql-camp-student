@@ -30,3 +30,14 @@ SELECT * FROM Band WHERE Name LIKE '% and %';
 SELECT * FROM Individual WHERE FirstName Like '___';
 
 SELECT * FROM Band WHERE Name LIKE '%s';
+
+/* exercise 4 joining */
+select IB. *, I.FirstName, I.LastName
+from IndividualBand as IB
+inner join Individual as I ON IB.IndividualID = I.ID
+where IB.BandID = 9;
+
+select IB. *,B.Name , I.FirstName, I.LastName from IndividualBand IB
+inner join Individual as I ON IB.IndividualID = I.ID
+inner join Band as B on B.ID = IB.BandID
+Where B.Name = 'Widespread Panic';
