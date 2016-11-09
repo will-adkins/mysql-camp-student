@@ -28,3 +28,4 @@ SELECT * FROM roster;
 
 SELECT team.ID, team.teamName, batting.teamID, batting.Rank, batting.battingAvg FROM team INNER JOIN batting ON team.ID = batting.teamID;
 SELECT batting.playerID, player.FirstName, player.LastName FROM batting INNER JOIN player ON batting.playerID = player.ID;
+SELECT player.ID, player.LastName, roster.teamID, roster.Position, roster.playerID FROM player INNER JOIN roster On player.ID = roster.playerID;
