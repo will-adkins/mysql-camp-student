@@ -410,7 +410,7 @@ inner join roster on player.id = roster.playerId;
  from  player
  Inner Join roster on player.id = roster.playerID
  Inner Join team on roster.teamID = team.ID
- where team.teamName = 'Boston Red Sox';  
+ where team.teamName = 'Boston Red Sox';
 */
 
  /*
@@ -418,3 +418,19 @@ inner join roster on player.id = roster.playerId;
  DESCRIBE vteamRoster;
  SHOW CREATE VIEW vteamRoster;
  */
+
+
+/* EX join-2
+
+use baseball;
+SELECT *
+FROM player
+left join batting on player.id = batting.playerId;
+
+*/
+/*
+use baseball;
+SELECT *
+FROM team
+left join roster on teamID = roster.teamId;
+*/
