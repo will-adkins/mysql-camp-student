@@ -25,7 +25,7 @@ SELECT * FROM Band WHERE Name LIKE ‘%Stones’;
 
 SELECT * FROM Individual WHERE FirstName Like ‘__ck’;
 
-SELECT * FROM Band WHERE Name LIKE '%and%';
+SELECT * FROM Band WHERE Name LIKE '% and %';
 
 SELECT * FROM Individual WHERE FirstName Like '___';
 
