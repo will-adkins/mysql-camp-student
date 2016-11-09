@@ -86,3 +86,29 @@ WHERE t.teamName = 'Boston Red Sox';
 
 SELECT * FROM vteamRoster;
 DESCRIBE vteamRoster;
+
+/* MORE JOINS */
+
+# Create a SELECT statement that joins the player table and the batting table. The query should show all the players and any matching players that exist within the batting table. You should see NULL when there are no matches in the batting table.
+SELECT p.ID AS PlayerID, CONCAT(p.LastName, ', ', p.firstName) AS Player, b.*
+FROM player p 
+LEFT JOIN batting b ON p.ID = b.playerID;
+
+# Create a SELECT statement that joins the roster table and the team table. The query should display all the teams and any matching players within the roster table. You should see NULL when there are no matches in the roster table.
+SELECT t.*, r.*
+FROM roster r
+RIGHT JOIN team t ON r.teamID = t.ID;
+
+# Create a query that shows teams that have players on a roster. If a team does not have any players on a roster, then do not display the team.
+SELECT t.teamName AS Team, t.ABBR, t.League, t.DivisionName, GROUP_CONCAT(r.playerID SEPARATOR ', ') AS PlayerIDs
+FROM roster r
+INNER JOIN team t ON r.teamID = t.ID
+GROUP BY t.ID
+ORDER BY Team;
+
+# Create a query that displays teams that do not have players on a roster.
+SELECT t.teamName AS Team, t.ABBR, t.League, t.DivisionName
+FROM team t
+LEFT JOIN roster r ON t.ID = r.teamID
+WHERE r.playerID IS NULL
+ORDER BY Team;
