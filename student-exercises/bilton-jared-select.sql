@@ -1,6 +1,10 @@
+-- Exercise 2 --
+
 USE RockStarDay2;
 
--- Excercise 1 --
+SHOW COLUMNS FROM Band;
+
+-- Excercise 3 --
 
 SELECT * FROM Individual
 WHERE LastName = 'Jennings';
@@ -19,7 +23,7 @@ SELECT * FROM Individual
 WHERE ID IN (1,3,5,7,19);
 
 
--- Exercise 2 --
+-- Exercise 4 --
 
 SELECT * FROM Band
 WHERE Genre = 'Alternative' and isTogether = 0;
