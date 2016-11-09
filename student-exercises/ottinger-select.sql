@@ -1,0 +1,6 @@
+USE RockStarDay2;
+
+SELECT * FROM INDIVIDUAL;
+
+
+SELECT * from Band;
