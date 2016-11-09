@@ -21,6 +21,6 @@ mysql> select ID, Name from Band where ID = 4;
 select * from Band where Name like 'The%';
 select * from Band where Name like '%Stones';
 select * from Individual where FirstName like '_ck';
-select * from Band where Name like '%and%';
-select * from Band where Name like '___';
+select * from Band where Name like '% and %';
+select * from Individual where FirstName like '_im';
 select * from Band where Name like '%s';
