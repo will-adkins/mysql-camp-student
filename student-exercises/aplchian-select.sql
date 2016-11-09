@@ -8,3 +8,6 @@ SELECT ID, LASTNAME, BIRTHDATE FROM Individual WHERE Year(Birthdate) > 1940;
 SELECT * FROM Individual WHERE ID IN (1,3,5,7,19);
 SELECT * FROM Band WHERE Genre = "Alternative" AND IsTogether = false;
 SELECT ID, Name FROM Band WHERE ID = "4";
+SELECT * FROM Band WHERE name LIKE '% and %';
+SELECT * FROM Individual where firstname LIKE '_im';
+SELECT * FROM Band WHERE name LIKE '%s';
