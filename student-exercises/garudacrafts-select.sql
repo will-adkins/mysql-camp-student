@@ -18,7 +18,9 @@ SELECT * FROM Individual WHERE ID IN (1,3,5,7,19);
 
 # Exercise 4
 
-SELECT * FROM Band WHERE Genre = 'Alternative' AND IsTogether = 1;
+# Create a query that provides a list of alternative bands that have broken up
+SELECT * FROM Band WHERE Genre = 'Alternative' AND IsTogether = 0;
 
+#Create a query that provides the id and name of the band with an ID of 4
 SELECT ID, Name FROM Band WHERE ID = 4;
 
