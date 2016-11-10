@@ -1,4 +1,14 @@
 USE RockStarDay2;
+--*****COMMON USED TERMS******
+--describe - to see the properties of the table
+--SELECT ID FROM
+  --SELECT * FROM: get all the rows and COLUMNS from a table
+-- ORDER BY - to organize the table into a specific ORDER
+    --DESC (decending order)
+--FROM, WHERE, ORDER BY -in that order
+--alias use "around the name" to change the name of a COLUMNS
+--HAVING is used instead of WHERE when using GROUP BY clause
+  --and use GROUP BY when you need to count or average.
 
 SHOW COLUMNS FROM Band;
 -- exercise 3
@@ -99,7 +109,7 @@ RIGHT JOIN team as t ON t.ID = r.teamID;
 SELECT DISTINCT t.teamName
 , r.teamID
 FROM roster as r
-INNER JOIN team as t ON t.ID = r.teamID;
+INNER JOIN team as t ON t.ID = r.teamID
 
 --Create a query that displays teams that do not have players on a roster.
 
@@ -109,3 +119,20 @@ SELECT t.teamName
 FROM team as t
 LEFT JOIN roster as r ON t.ID = r.teamID
 WHERE r.teamID IS NULL;
+
+--EXERCISE 1 from Order-By
+--Create a SELECT statement that joins the team table to the batting table using the team's ID column.
+--Be sure to include the batting.BattingAvg, batting.ID, team.TeamName columns.
+--The results should look something like this:
+
+SELECT batting.battingAvg
+, batting.ID
+, team.teamName
+FROM team
+INNER JOIN batting ON batting.teamID = team.ID;
+
+--Sort the players by team.
+--Within each team, sort the hitters with the most AtBats.
+SELECT FirstName,AtBats, teamName, ABBR, Hits
+FROM baseball.vbattingleaders
+ORDER BY teamName, AtBats DESC;
