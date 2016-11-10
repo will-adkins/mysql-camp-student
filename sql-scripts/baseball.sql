@@ -434,3 +434,57 @@ SELECT *
 FROM team
 left join roster on teamID = roster.teamId;
 */
+/*
+Select p.ID, p.LastName, b.ID, b.playerID, b.Hits
+FROM player p left join batting b ON b.playerID =p.ID;
+*/
+
+
+/*
+use baseball;
+SELECT player.LastName
+, player.FirstName
+, roster.playerID
+, team.teamName
+, team.DivisionName
+from player
+Inner join roster on player.ID = roster.playerID
+inner join team on roster.teamID = team.ID
+where team.DivisionName = "NL EAST"
+;
+
+*/
+/*
+use baseball;
+SELECT player.LastName
+, player.FirstName
+, roster.playerID
+, team.teamName
+, team.DivisionName
+from player
+Inner join roster on player.ID = roster.playerID
+inner join team on roster.teamID = team.ID
+where team.DivisionName = "NL CENTRAL"
+;
+*/
+
+/* ex.3
+
+select ID, LastName, FirstName, Birthdate
+From player
+Order by LastName;
+*/
+/*
+select playerID, playerName, League, DivisionName
+, TeamName, HeightInches
+From vteamRoster
+ORDER BY League, DivisionName, TeamName, HeightInches DESC;
+*/
+/*
+select
+ battingAvg
+, batting.ID
+, team.teamName
+FROM team join batting on team.ID = batting.teamID order by battingAvg desc;
+;
+*/
