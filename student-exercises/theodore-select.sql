@@ -34,3 +34,56 @@ WHERE Name LIKE '% and %';
 
 SELECT * FROM Individual
 WHERE FirstName LIKE '_im';
+
+SELECT IB.*, I.FirstName, I.LastName
+FROM IndividualBand IB
+INNER JOIN Individual as I ON IB.IndividualID = I.ID
+WHERE IB.BandID = 9;
+
+USE baseball;
+SELECT team.ID
+, team.TeamName
+, batting.TeamID
+, batting.Rank
+, batting.BattingAvg
+FROM team
+INNER JOIN batting ON team.ID = batting.TeamID;
+
+SELECT player * , player.LastName, player.FirstName
+FROM player
+INNER JOIN batting ON playerID = batting.ID;
+
+SELECT player.ID
+, player.LastName
+, player.FirstName
+, batting.ID
+, batting.playerID
+, batting.BattingAvg
+FROM player
+INNER JOIN batting ON batting.playerID = player.ID
+WHERE batting.BattingAvg = 331;
+
+SELECT batting.playerID, batting.battingAvg, player.FirstName, player.LastName
+FROM batting INNER JOIN player
+ON batting.playerID = player.ID;
+
+SELECT player.ID, player.LastName, roster.teamID, roster.Position, roster.playerID
+FROM player INNER JOIN roster
+On player.ID = roster.playerID INNER JOIN team
+ON roster.teamID = team.ID WHERE teamName = 'Boston Red Sox';
+
+SELECT player.ID, batting.playerID, batting.teamID
+FROM player LEFT JOIN batting
+ON player.ID = batting.playerID;
+
+SELECT roster.teamID, roster.playerID, team.ID, team.teamName
+FROM roster RIGHT JOIN team
+ON roster.teamID = team.ID;
+
+SELECT roster.teamID, roster.playerID, team.ID, team.teamName
+FROM roster RIGHT JOIN team ON roster.teamID = team.ID
+WHERE roster.playerID LIKE '__' or roster.playerID Like '___';
+
+SELECT roster.teamID, roster.playerID, team.ID, team.teamName
+FROM roster RIGHT JOIN team ON roster.teamID = team.ID
+WHERE roster.playerID IS NULL;
