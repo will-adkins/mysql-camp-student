@@ -35,3 +35,9 @@ select p.*, b.* from player as p left outer join batting as b on p.ID = b.player
 select r.*, t.* from roster as r left outer join team as t on r.teamID = t.ID;
 select distinct r.teamID, t.teamName from roster as r left outer join team as t on r.teamID = t.ID where playerID is not null;
 select team.ID, team.teamName, team.ABBR, roster.* from team left join roster on team.ID = roster.teamID where roster.ID is null;
+
+--order by ex1
+select t.teamName, b.BattingAvg, b.ID from batting as b left join team as t on t.ID = b.teamID order by b.BattingAvg DESC;
+select FirstName, LastName, ABBR, Hits from vbattingleaders order by hits desc;
+select FirstName, LastName, ABBR, Hits from vbattingleaders order by hits asc;
+select FirstName, LastName, ABBR, Hits, AtBats from vbattingleaders order by ABBR, AtBats;
