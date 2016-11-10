@@ -35,6 +35,7 @@ SELECT player.ID, batting.playerID, batting.teamID FROM player LEFT JOIN batting
 SELECT roster.teamID, roster.playerID, team.ID, team.teamName FROM roster RIGHT JOIN team ON roster.teamID = team.ID;
 SELECT roster.teamID, roster.playerID, team.ID, team.teamName FROM roster RIGHT JOIN team ON roster.teamID = team.ID WHERE roster.playerID LIKE '__' or roster.playerID Like '___';
 SELECT roster.teamID, roster.playerID, team.ID, team.teamName FROM roster RIGHT JOIN team ON roster.teamID = team.ID WHERE roster.playerID IS NULL;
+
 /* OR */
 SELECT team.ID, team.teamName, roster.teamID, roster.playerID FROM team LEFT JOIN roster ON team.ID = roster.teamID WHERE roster.ID IS NULL;
 
