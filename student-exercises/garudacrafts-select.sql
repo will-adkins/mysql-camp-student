@@ -130,3 +130,23 @@ SELECT FirstName, LastName, ABBR, Hits FROM baseball.vbattingleaders ORDER BY Hi
 # Sort the players by team. Within each team, sort the hitters with the most AtBats.
 SELECT FirstName, LastName, ABBR, Hits FROM baseball.vbattingleaders ORDER BY teamName ASC, AtBats DESC;
 
+/* GROUP BY */
+
+# Retrieve all the columns from the vteamRoster view for only the batting leaders.
+SELECT * FROM vteamRoster v INNER JOIN batting b ON v.playerID = b.playerID;
+
+# Determine the average weight of the batting leaders by division.
+SELECT v.DivisionName, AVG(v.Weight) AS WeightAvg
+FROM vteamRoster v 
+INNER JOIN batting b ON v.playerID = b.playerID
+GROUP BY DivisionName
+ORDER BY WeightAvg;
+
+# Create a query that returns all rows from just the vteamRoster view.
+SELECT * FROM vteamRoster;
+
+# Create a query that counts the number of players within the vteamRoster view by position.
+SELECT Position, COUNT(playerID) AS PositionCount
+FROM vteamRoster
+GROUP BY Position
+ORDER BY PositionCount DESC;
