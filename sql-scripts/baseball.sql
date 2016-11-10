@@ -488,3 +488,38 @@ select
 FROM team join batting on team.ID = batting.teamID order by battingAvg desc;
 ;
 */
+/*  group by clause ex
+select teamName as "TEAM NAME",
+AVG(batting.battingAVG) as
+"Batting Leaders AVG"
+from team inner join batting on team.id =batting.teamID
+group by teamName order by "Batting Leaders AVG"
+;
+*/
+/*select count(team.ID) as battingleadercount, team.teamName
+from team
+inner join batting on team.id = batting.teamID
+group by team.teamName
+having battingleadercount > 1
+order by battingleadercount desc
+;
+*/
+/*
+
+select team.League, AVG(batting.runs)
+from team inner join  batting on team.ID = batting.teamID
+group by League;
+*/
+/*
+select Count(battingID) as playerCount, teamName, ABBR
+from vbattingleaders
+Group by teamName
+order by playerCount desc;
+*/
+/*
+select v.DivisionName
+, AVG(v.Weight) as 'avgWeight'
+from vteamRoster v
+join batting b on b.playerID = v.playerID
+group by v.DivisionName;
+*/
