@@ -29,3 +29,9 @@ select * from Band where Name like '%s';
 select b.playerID, p.FirstName, p.LastName, b.battingAvg from batting as b inner join player as p where b.playerID = p.ID and b.battingAvg = 331;
 select p.*, r.* from player as p inner join roster as r on p.ID = r.PlayerID;
 select p.*, r.*, t.* from player as p inner join roster as r on p.ID = r.PlayerID inner join team as t on r.teamID = t.ID where t.teamName = 'Boston Red Sox';
+
+--ex 2 JOINS
+select p.*, b.* from player as p left outer join batting as b on p.ID = b.playerID;
+select r.*, t.* from roster as r left outer join team as t on r.teamID = t.ID;
+select distinct r.teamID, t.teamName from roster as r left outer join team as t on r.teamID = t.ID where playerID is not null;
+select team.ID, team.teamName, team.ABBR, roster.* from team left join roster on team.ID = roster.teamID where roster.ID is null;
