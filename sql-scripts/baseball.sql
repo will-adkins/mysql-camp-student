@@ -414,6 +414,17 @@ FROM team
 LEFT JOIN roster ON roster.teamID = team.ID;
 
 SELECT DISTINCT team.ID,
-team.teamName
+team.teamName,
+roster.*
 FROM team
-LEFT JOIN roster ON team.ID = roster.teamID;
+LEFT JOIN roster ON team.ID = roster.teamID
+WHERE roster.ID IS NULL;
+
+--  Exercise 11.1  --
+SELECT batting.BattingAvg, batting.ID, team.TeamName
+FROM Team
+INNER JOIN batting ON Team.ID = batting.teamID;
+
+SELECT FirstName, LastName, ABBR, HITS
+FROM baseball.vbattingleaders
+ORDER BY HITS;
