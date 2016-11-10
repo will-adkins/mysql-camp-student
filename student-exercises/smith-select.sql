@@ -44,3 +44,21 @@ SELECT batting.battingAvg, batting.ID, team.teamName FROM batting INNER JOIN tea
 SELECT playerID, FirstName, LastName, ABBR, Hits FROM vbattingleaders ORDER BY Hits DESC;
 SELECT playerID, FirstName, LastName, ABBR, Hits FROM vbattingleaders ORDER BY Hits ASC;
 SELECT playerID, FirstName, LastName, ABBR, Hits, AtBats FROM vbattingleaders ORDER BY ABBR, AtBats DESC;
+
+SELECT COUNT(team.ID) as BattingLeaderCount, team.teamName FROM team INNER JOIN batting ON team.ID = batting.teamID GROUP BY team.teamName HAVING BattingLeaderCount > 1 ORDER BY BattingLeaderCount DESC;
+
+SELECT FROM batting INNER JOIN team ON
+
+/* GROUP BY */
+-- Retrieve all the columns from the vteamRoster view for only the batting leaders.
+-- To accomplish this, create a query that joins the batting table to the vteamRoster view
+-- using the playerID column for the join.
+SELECT vteamRoster.*, batting.* FROM vteamRoster INNER JOIN batting ON vteamRoster.playerID = batting.playerID;
+
+-- Add weight AVG
+SELECT vteamRoster.DivisionName, AVG(vteamRoster.Weight) FROM vteamRoster INNER JOIN batting ON vteamRoster.playerID = batting.playerID GROUP BY DivisionName;
+
+-- 3
+SELECT * FROM vteamRoster
+
+--4
