@@ -73,8 +73,8 @@ On player.ID = roster.playerID INNER JOIN team
 ON roster.teamID = team.ID WHERE teamName = 'Boston Red Sox';
 
 SELECT player.ID, batting.playerID, batting.teamID
-FROM player LEFT JOIN batting
-ON player.ID = batting.playerID;
+FROM batting LEFT JOIN player
+ON batting.playerID = player.ID;
 
 SELECT roster.teamID, roster.playerID, team.ID, team.teamName
 FROM roster RIGHT JOIN team
@@ -87,3 +87,12 @@ WHERE roster.playerID LIKE '__' or roster.playerID Like '___';
 SELECT roster.teamID, roster.playerID, team.ID, team.teamName
 FROM roster RIGHT JOIN team ON roster.teamID = team.ID
 WHERE roster.playerID IS NULL;
+
+SELECT ID, LastName, FirstName, Birthdate
+FROM player ORDER BY LastName;
+
+SELECT ID, LastName, FirstName, Birthdate
+FROM player ORDER BY Birthdate;
+
+SELECT ID, LastName, FirstName, Bats, HeightInches
+FROM player ORDER BY HeightInches, LastName, FirstName;
