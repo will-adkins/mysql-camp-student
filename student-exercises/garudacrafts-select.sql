@@ -150,3 +150,29 @@ SELECT Position, COUNT(playerID) AS PositionCount
 FROM vteamRoster
 GROUP BY Position
 ORDER BY PositionCount DESC;
+
+/* HAVING */
+
+# Create three select statements that use the GROUP BY and HAVING clause. Use any table or view from any of the databases created to this point.
+
+# Get all the teams in the National League who have at least one left-handed batter 
+SELECT teamName, League, COUNT(Bats) AS BatsLeftyCount
+FROM vteamRoster
+WHERE Bats = 'L'
+AND League = 'NL'
+GROUP BY teamName
+HAVING BatsLeftyCount > 0;
+
+# Count the players who bat and throw the same hand and organized by League
+SELECT League, Bats, Throws, COUNT(PlayerID) AS BatsEqualsThrows
+FROM vteamRoster
+GROUP BY League, Bats, Throws
+HAVING Bats = Throws;
+
+# Get teams with an average batting leader height greater than 6 feet
+SELECT v.teamName, AVG(v.HeightInches) AS HeightAvg
+FROM vteamRoster v 
+INNER JOIN batting b ON v.playerID = b.playerID
+GROUP BY teamName
+HAVING HeightAvg > 72
+ORDER BY HeightAvg;
