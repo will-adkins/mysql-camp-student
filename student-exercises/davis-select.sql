@@ -35,3 +35,61 @@ SELECT * FROM Band WHERE Name LIKE '% and %';
 SELECT * FROM Individual WHERE FirstName LIKE '_im';
 --Find all bands that end with ‘s’ like ‘The Beatles’ or ‘The Rolling Stones’ or ‘Pixies’.
 SELECT * FROM Band Where Name LIKE '%s';
+
+SELECT IB.*, I.firstName,I.lastName
+FROM IndividualBand IB
+INNER JOIN Individual as I ON IB.IndividualID = I.ID
+WHERE IB.BandID =9;
+
+SELECT IB.*, B.Name, I.firstName,I.lastName
+FROM IndividualBand IB
+INNER JOIN Individual as I ON IB.IndividualID = I.ID
+INNER JOIN Band as B
+--All columns from IndividualBand and the Individual first and last name
+
+SELECT IB.*, B.Name as BandName, I.FirstName
+FROM IndividualBand IB
+INNER JOIN Band as B ON B.ID = IB.BandID
+INNER JOIN Individual as I ON IB.IndividualID = I.ID
+WHERE I.FirstName = 'George';
+
+--Create a SELECT statement that joins the batting table to the player table.
+--Which player has a batting average of 331?
+SELECT player.ID
+, player.LastName
+, batting.Rank
+, batting.battingAvg
+FROM player
+INNER JOIN batting ON player.ID = batting.playerID
+WHERE batting.battingAvg = 331;
+--Create a SELECT statement that joins the player table to the roster table.
+--Add another join to the previous statement by joining the team table to the roster table.
+SELECT player.ID
+, player.LastName
+, r.ID
+, r.Position
+, team.teamName
+FROM player
+INNER JOIN roster as r ON player.ID = r.playerID
+INNER JOIN team ON team.ID = r.teamID
+WHERE teamName ='Boston Red Sox';
+
+--EXERCISE 2
+--Create a SELECT statement that joins the player table and the batting table.
+--The query should show all the players and any matching players that exist within the batting table.
+--You should see NULL when there are no matches in the batting table.
+SELECT p.ID
+, p.LastName
+, p.FirstName
+, b.battingAvg
+FROM player as p
+LEFT JOIN batting as b ON p.ID = b.playerID;
+
+--Create a SELECT statement that joins the roster table and the team table.
+--The query should display all the teams and any matching players within the roster table.
+--You should see NULL when there are no matches in the roster table.
+SELECT r.Position
+, t.teamName
+, t.ID
+FROM roster as r
+RIGHT JOIN team as t ON t.ID = r.teamID;
