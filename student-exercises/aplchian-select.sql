@@ -27,6 +27,58 @@ Select *
 from player
 left join batting on player.ID = batting.playerID
 
-Select *
-from player
-left join batting on player.ID = batting.playerID
+Select distinct
+team.id,
+team.teamname,
+team.ABBR
+from team
+left join roster on team.ID = roster.teamid
+where roster.playerid is not null order by abbr
+
+
+select batting.battingavg
+, batting.id
+, team.teamname
+from batting
+inner join team on batting.teamid = team.id
+order by battingavg desc
+
+
+SELECT * FROM baseball.vbattingleaders
+order by teamName, atBats asc
+
+select Count(team.id) as BattingLeaderCount, team.teamname
+from team
+inner join batting on team.id = batting.teamid
+group by team.teamname
+having BattingLeaderCount > 1
+order by BattingLeaderCount DESC
+
+select Count(team.id) as BattingLeaderCount, team.teamname
+from team
+inner join batting on team.id = batting.teamid
+group by team.teamname
+having BattingLeaderCount > 1
+order by BattingLeaderCount DESC
+
+select count(*) as teamCount, teamid, team.teamname
+from batting inner join
+team on batting.teamid = team.id
+group by teamID
+order by teamCount desc
+
+-- restricts to only show 'L'
+select playerid, playername, bats, teamname
+from vteamRoster
+where Bats = "L"
+
+select COUNT(PLAYERID), teamname
+from vteamRoster
+Where Bats = "L"
+group by teamname
+
+select count(playerID) as playercount, teamname
+from vteamRoster
+WHERE Bats = "L"
+GROUP BY TeamName
+HAVING playercount > 2
