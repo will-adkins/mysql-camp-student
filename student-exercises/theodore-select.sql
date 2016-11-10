@@ -96,3 +96,65 @@ FROM player ORDER BY Birthdate;
 
 SELECT ID, LastName, FirstName, Bats, HeightInches
 FROM player ORDER BY HeightInches, LastName, FirstName;
+
+SELECT PlayerID, PlayerName, League, DivisionName, TeamName, HeightInches
+FROM vteamRoster
+ORDER BY League, DivisionName, TeamName, HeightInches DESC;
+
+SELECT batting.battingAvg, batting.ID, team.teamName
+FROM team INNER JOIN batting
+ON team.ID =  batting.ID;
+ORDER BY batting.AVG
+
+SELECT * FROM baseball.vbattingleaders
+order by Hits;
+
+SELECT * FROM baseball.vbattingleaders
+order by Hits desc;
+
+SELECT * FROM baseball.vbattingleaders
+order by teamName, AtBats;
+
+SELECT team.ID, team.teamName "Team Name", AVG(batting.battingAVG) "Batting Leaders Avg."
+FROM team
+INNER JOIN batting
+ON team.ID = batting.TeamID
+GROUP BY teamName
+ORDER BY "Batting Leaders Avg.";
+
+SELECT Count(team.ID) as BattingLeaderCount, team.teamName
+FROM team
+INNER JOIN batting ON team.ID =  batting.teamID
+GROUP BY team.teamName
+HAVING BattingLeaderCount > 1
+ORDER BY BattingLeaderCount DESC;
+
+/*
+Query 1  Retrieve all the columns from the
+vteamRoster view for only the batting leaders.
+To accomplish this, create a query that joins the batting table
+to the vteamRoster view using the playerID column for the join.
+*/
+SELECT v.*
+FROM vteamRoster v
+INNER JOIN batting b on b.playerID = v.playerID
+
+/*Query 2 average weight of the batting leaders by division */
+SELECT v.DivisionName as Division
+, AVG(v.Weight) as 'averageWeight'
+FROM vteamRoster v
+INNER JOIN batting b on b.playerID = v.playerID
+GROUP BY v.DivisionName
+
+
+/*Query 3 -  returns all rows from the **vteamRoster** view */
+SELECT *
+FROM vteamRoster;
+
+
+
+/* Query 4 - count the number of players within
+the view by position*/
+SELECT Position, COUNT(playerID) as positionCount
+FROM vteamRoster
+GROUP BY Position;
