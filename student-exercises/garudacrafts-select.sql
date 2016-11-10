@@ -112,3 +112,21 @@ FROM team t
 LEFT JOIN roster r ON t.ID = r.teamID
 WHERE r.playerID IS NULL
 ORDER BY Team;
+
+/* ORDER BY */
+
+# Create a SELECT statement that joins the team table to the batting table using the team's ID column. Be sure to include the batting.BattingAvg, batting.ID, team.TeamName columns. 
+SELECT b.ID, b.battingAvg, t.teamname FROM team t RIGHT JOIN batting b ON t.ID = b.teamID;
+
+# Build on the previous query that sorts the result set by batting average. The highest batting averages should be listed first.
+SELECT b.ID, b.battingAvg, t.teamname FROM team t RIGHT JOIN batting b ON t.ID = b.teamID ORDER BY battingAvg DESC;
+
+# Which players have the most hits?
+SELECT FirstName, LastName, ABBR, Hits FROM baseball.vbattingleaders ORDER BY Hits DESC;
+
+# Which players have the least hits?
+SELECT FirstName, LastName, ABBR, Hits FROM baseball.vbattingleaders ORDER BY Hits ASC;
+
+# Sort the players by team. Within each team, sort the hitters with the most AtBats.
+SELECT FirstName, LastName, ABBR, Hits FROM baseball.vbattingleaders ORDER BY teamName ASC, AtBats DESC;
+
