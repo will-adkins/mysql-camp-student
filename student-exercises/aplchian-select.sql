@@ -11,3 +11,22 @@ SELECT ID, Name FROM Band WHERE ID = "4";
 SELECT * FROM Band WHERE name LIKE '% and %';
 SELECT * FROM Individual where firstname LIKE '_im';
 SELECT * FROM Band WHERE name LIKE '%s';
+
+
+Select player.LastName
+, player.FirstName
+, player.WeightLbs
+, roster.playerID
+, team.teamName
+from  player
+Inner Join roster on player.id = roster.playerID
+Inner Join team on roster.teamID = team.ID
+where teamName = 'Boston Red Sox'
+
+Select *
+from player
+left join batting on player.ID = batting.playerID
+
+Select *
+from player
+left join batting on player.ID = batting.playerID
