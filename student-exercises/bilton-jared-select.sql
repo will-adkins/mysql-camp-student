@@ -80,6 +80,8 @@ SELECT player.ID
 FROM roster
 INNER JOIN player ON roster.playerID = player.ID;
 
+
+
 SELECT * FROM vteamRoster;
 
 DESCRIBE vteamRoster;
@@ -87,10 +89,53 @@ DESCRIBE vteamRoster;
 SHOW CREATE VIEW vteamRoster;
 
 
--- Joins Exercise 2 --
+-- Joins Exercise 10-joins/2 --
 
 -- Create a SELECT statement that joins the **player** table and the **batting** table. The query should show all the players and any matching players that exist within the batting table. You should see NULL when there are no matches in the batting table.
 
-SELECT player
+SELECT player.ID
+, player.LastName
+, player.FirstName
+, batting.TeamID
+, batting.BattingAvg
+, batting.Rank
+FROM player
+LEFT JOIN batting ON batting.playerID = player.ID;
 
-LEFT JOIN player
+
+-- Create a SELECT statement that joins the roster table and the team table. The query should display all the teams and any matching players within the roster table. You should see NULL when there are no matches in the roster table.
+
+
+SELECT roster.ID
+, roster.playerID
+, roster.Position
+, roster.SeasonYear
+, team.teamName
+, team.league
+, team.DivisionName
+FROM roster
+RIGHT JOIN team ON roster.teamID = team.ID;
+
+
+-- Create a query that shows teams that have players on a roster. If a team does not have any players on a roster, then do not display the team.
+
+SELECT roster.ID
+, roster.playerID
+, roster.Position
+, roster.SeasonYear
+, team.teamName
+, team.league
+, team.DivisionName
+FROM roster
+LEFT JOIN team ON roster.teamID = team.ID;
+
+-- Create a query that displays teams that do not have players on a roster.
+
+SELECT team.ID
+, team.teamName
+, team.League
+, roster.ID
+, roster.SeasonYear
+FROM team
+JOIN roster ON team.ID = roster.teamID
+WHERE roster.playerID IS NULL;
