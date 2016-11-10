@@ -74,7 +74,7 @@ INNER JOIN roster as r ON player.ID = r.playerID
 INNER JOIN team ON team.ID = r.teamID
 WHERE teamName ='Boston Red Sox';
 
---EXERCISE 2
+--EXERCISE 2 - JOINS
 --Create a SELECT statement that joins the player table and the batting table.
 --The query should show all the players and any matching players that exist within the batting table.
 --You should see NULL when there are no matches in the batting table.
@@ -93,3 +93,19 @@ SELECT r.Position
 , t.ID
 FROM roster as r
 RIGHT JOIN team as t ON t.ID = r.teamID;
+
+--Create a query that shows teams that have players on a roster.
+--If a team does not have any players on a roster, then do not display the team.
+SELECT DISTINCT t.teamName
+, r.teamID
+FROM roster as r
+INNER JOIN team as t ON t.ID = r.teamID;
+
+--Create a query that displays teams that do not have players on a roster.
+
+SELECT t.teamName
+, r.teamID
+, r.Position
+FROM team as t
+LEFT JOIN roster as r ON t.ID = r.teamID
+WHERE r.teamID IS NULL;
