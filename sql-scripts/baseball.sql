@@ -416,4 +416,5 @@ LEFT JOIN roster ON roster.teamID = team.ID;
 SELECT DISTINCT team.ID,
 team.teamName
 FROM team
-LEFT JOIN roster ON team.ID = roster.teamID;
+LEFT JOIN roster ON team.ID = roster.teamID
+WHERE roster.ID IS NULL;
