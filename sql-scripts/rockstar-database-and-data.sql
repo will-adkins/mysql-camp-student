@@ -81,7 +81,7 @@ CREATE TABLE band (
   name varchar(40) DEFAULT NULL,
   yearFormed year(4) NOT NULL,
   isTogether tinyint(1) NOT NULL DEFAULT '1',
-  henre ENUM('Rock','Alternative','Country','Funk', 'Grunge', 'Bluegrass'),
+  genre ENUM('Rock','Alternative','Country','Funk', 'Grunge', 'Bluegrass'),
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB;
 
