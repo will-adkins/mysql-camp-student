@@ -3,28 +3,28 @@ use in sql-intro portion of course.
 
 */
 
-DROP SCHEMA IF EXISTS RockStarDay2;
+DROP SCHEMA IF EXISTS rockStarDay2;
 
-CREATE DATABASE RockStarDay2;
+CREATE DATABASE rockStarDay2;
 
-USE RockStarDay2;
+USE rockStarDay2;
 
-CREATE TABLE RockStarDay2.Individual (
+CREATE TABLE rockStarDay2.individual (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `LastName` varchar(50) NOT NULL,
-  `FirstName` varchar(25) DEFAULT NULL,
-  `BirthDate` date DEFAULT NULL,
-  `DateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `DeceasedDate` date DEFAULT NULL,
+  `lastName` varchar(50) NOT NULL,
+  `firstName` varchar(25) DEFAULT NULL,
+  `birthDate` date DEFAULT NULL,
+  `dateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `deceasedDate` date DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB;
 
 
-INSERT INTO RockStarDay2.Individual
-(LastName,
-FirstName,
-BirthDate,
-DeceasedDate)
+INSERT INTO rockStarDay2.individual
+(lastName,
+firstName,
+birthDate,
+deceasedDate)
 VALUES
 ('Jagger','Mick','1943-07-26',NULL)
 , ('Zimmerman','Robert','1942-05-25',NULL)
@@ -76,21 +76,21 @@ VALUES
 , ('Nelson','Willie','1933-04-30',NULL)
 ;
 
-CREATE TABLE Band (
+CREATE TABLE band (
   ID int(10) unsigned NOT NULL AUTO_INCREMENT,
-  Name varchar(40) DEFAULT NULL,
-  YearFormed year(4) NOT NULL,
-  IsTogether tinyint(1) NOT NULL DEFAULT '1',
-  Genre ENUM('Rock','Alternative','Country','Funk', 'Grunge', 'Bluegrass'),
+  name varchar(40) DEFAULT NULL,
+  yearFormed year(4) NOT NULL,
+  isTogether tinyint(1) NOT NULL DEFAULT '1',
+  henre ENUM('Rock','Alternative','Country','Funk', 'Grunge', 'Bluegrass'),
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB;
 
-INSERT INTO Band
+INSERT INTO band
 (
-Name,
-YearFormed,
-IsTogether,
-Genre
+name,
+yearFormed,
+isTogether,
+genre
 )
 VALUES
 ('Rolling Stones', '1962', 1, 'Rock')
@@ -118,22 +118,22 @@ VALUES
 , ('The Band', '1964', 0, 'Country')
 ;
 
-CREATE TABLE IndividualBand (
+CREATE TABLE individualBand (
   ID int(10) unsigned NOT NULL AUTO_INCREMENT,
-  BandID int(10) unsigned NOT NULL,
-  IndividualID int(10) unsigned NOT NULL,
+  bandID int(10) unsigned NOT NULL,
+  individualID int(10) unsigned NOT NULL,
   PRIMARY KEY (ID),
-  KEY BandID_IDX (BandID),
-  KEY IndividualID_IDX (IndividualID),
-  CONSTRAINT IndividualBand_ibfk_1 FOREIGN KEY (BandID) REFERENCES Band (ID) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT IndividualBand_ibfk_2 FOREIGN KEY (IndividualID) REFERENCES Individual (ID) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY bandID_IDX (BandID),
+  KEY individualID_IDX (IndividualID),
+  CONSTRAINT individualBand_ibfk_1 FOREIGN KEY (bandID) REFERENCES band (ID) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT individualBand_ibfk_2 FOREIGN KEY (individualID) REFERENCES individual (ID) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 
-INSERT INTO IndividualBand
+INSERT INTO individualBand
 (
-BandID,
-IndividualID)
+bandID,
+individualID)
 VALUES
 ( 1,1 )
 , ( 3,4 )
@@ -152,13 +152,13 @@ VALUES
 , ( 9,24 )
 ;
 
-CREATE VIEW BandMembers
+CREATE VIEW bandMembers
 AS
 select B.Genre AS Genre
 ,B.Name AS Name
 ,I.LastName AS LastName
 ,I.FirstName AS FirstName
 ,I.BirthDate AS BirthDate
-from Band B
-join IndividualBand IB on B.ID = IB.BandID
-join Individual I on I.ID = IB.IndividualID;
+from band B
+join individualBand IB on B.ID = IB.bandID
+join individual I on I.ID = IB.individualID;
