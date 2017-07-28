@@ -9,7 +9,7 @@ CREATE DATABASE rockStarDay2;
 
 USE rockStarDay2;
 
-CREATE TABLE rockStarDay2.individual (
+CREATE TABLE individual (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `lastName` varchar(50) NOT NULL,
   `firstName` varchar(25) DEFAULT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE rockStarDay2.individual (
 ) ENGINE=InnoDB;
 
 
-INSERT INTO rockStarDay2.individual
+INSERT INTO individual
 (lastName,
 firstName,
 birthDate,
