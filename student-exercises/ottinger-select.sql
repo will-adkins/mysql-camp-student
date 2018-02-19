@@ -1,6 +1,5 @@
-USE RockStarDay2;
+USE rockStarDay2;
+-- describe band;
+-- SHOW COLUMNS FROM band;
 
-SELECT * FROM INDIVIDUAL;
-
-
-SELECT * from Band;
+SELECT ID, name, genre FROM band;
