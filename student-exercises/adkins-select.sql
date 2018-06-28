@@ -27,9 +27,7 @@ select * from band
 where name LIKE '% and %';
  
  select * from individual
- where firstName LIKE 'Tim%' 
- or firstName LIKE 'Kim%'
- or firstName LIKE 'Jim%'
+ where firstName LIKE '_im';
  
  select * from band
  where name LIKE '%s';
