@@ -60,4 +60,6 @@ select *
 from vbattingleaders
 order by teamName ASC, atbats DESC;
 
-
+select b.rank, b.battingAvg, concat(p.lastName, ', ', p.firstName) as playerName
+from player p
+join batting b on p.ID = b.playerID;
