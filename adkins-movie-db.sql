@@ -1,7 +1,7 @@
-DROP SCHEMA IF EXISTS actor;
+DROP SCHEMA IF EXISTS actorWill;
 
-CREATE DATABASE actor;
-USE actor;
+CREATE DATABASE actorWill;
+USE actorWill;
 
 CREATE TABLE `individual` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,

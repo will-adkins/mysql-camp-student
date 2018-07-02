@@ -62,4 +62,11 @@ order by teamName ASC, atbats DESC;
 
 select b.rank, b.battingAvg, concat(p.lastName, ', ', p.firstName) as playerName
 from player p
-join batting b on p.ID = b.playerID;
+join batting b on p.ID = b.playerID
+order by battingAvg DESC;
+
+select t.league, t.divisionName as division, t.teamName as team 
+from team t 
+LEFT JOIN roster r ON t.ID = r.teamID 
+WHERE r.playerID IS NULL 
+ORDER BY t.league, t.divisionName, t.teamName;
