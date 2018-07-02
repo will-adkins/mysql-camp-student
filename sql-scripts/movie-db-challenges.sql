@@ -18,6 +18,10 @@ from movie m
 group by genre
 ) as genreCount;
 
+select genre, avg(boxOffice) as "Average $$$"
+from movie
+group by genre;
+
 select d.name, count(m.directorID) as movieCount
 from director d
 join movie m on m.directorID = d.ID
@@ -99,8 +103,16 @@ order by m.genre, m.rottenTomatoes DESC
 group by genre;
 
 
-select m.genre, m.title, d.name, MAX(m.rottenTomatoes)
+select m.genre, m.title, d.name, m.rottenTomatoes
 from movie m
 join director d on m.directorID = d.ID
-group by m.genre;
+group by genre;
 
+-- 16)  Which directors directed movies with female actresses?
+
+select d.name
+from director d
+join movie m on m.directorID = d.ID
+join role r on r.movieID = m.ID
+join actor a on r.actorID = a.ID
+where a.gender = 'F';
